@@ -89,5 +89,8 @@ use FlickerLeap\Square;
 
         <p><!-- Let us know how we can improve this test here --></p>
 
+        As this position is for a full stack developer, You could asses the knoeledge of database proficiency as well.
+        You could use coding challenges that test the knowledge of front-end technologies such as HTML, CSS, JavaScript etc.
+
     </body>
 </html>
