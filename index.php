@@ -40,7 +40,7 @@ use FlickerLeap\Square;
 
         <?php
             // output your diamond here
-            $diamond = new Diamond(5);
+            $diamond = new Diamond(6);
             $diamond->displayName();
             $diamond->draw();
         ?>

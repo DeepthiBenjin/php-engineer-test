@@ -8,44 +8,43 @@ namespace FlickerLeap;
 class Diamond extends Shape
 {
     /**
-     *
-     * @param int $length The length of each side (in pixels)
+     * @var int $length The length of the diamond (in pixels)
      */
-    public function __construct($length = 5)
+    public $length;
+
+    /**
+     * Diamond constructor.
+     *
+     * @param int $length The length of the diamond (in pixels)
+     */
+    public function __construct($length)
     {
-        $this->name = 'Diamond';
-        $this->sides = 4;
+        $this->sides = 6;
         $this->sideLength = $length;
-        $this->pixel = "*";
+        $this->length = $length;
+        parent::__construct();
     }
 
     /**
-     *
+     * Draws the diamond shape.
      */
     public function draw()
     {
-        for ($i = 0; $i < $this->sideLength; $i++) {
-            for ($j = 0; $j < $this->sideLength - $i; $j++) {
-                echo $this->padding();
-            }
+        // Calculate the center of the diamond
+        $center = floor($this->length / 2);
 
-            for ($j = 0; $j < 2 * $i + 1; $j++) {
-                echo $this->pixel . $this->padding();
-            }
+        // Loop through the rows of the diamond
+        for ($row = 0; $row < $this->length; $row++) {
+            // Calculate the number of pixels to draw on this row
+            $pixels = ($row < $center) ? ($row * 2) + 1 : (($this->length - $row - 1) * 2) + 1;
 
-            echo $this->newLine();
-        }
+            // Calculate the amount of padding needed on this row
+            $padding = $center - floor($pixels / 2);
 
-        for ($i = $this->sideLength - 2; $i >= 0; $i--) {
-            for ($j = 0; $j < $this->sideLength - $i; $j++) {
-                echo $this->padding();
-            }
-
-            for ($j = 0; $j < 2 * $i + 1; $j++) {
-                echo $this->pixel . $this->padding();
-            }
-
-            echo $this->newLine();
+            // Output the padding and pixels for this row
+            echo $this->padding($padding);
+            echo str_repeat($this->pixel, $pixels);
+            $this->newLine();
         }
     }
 }
